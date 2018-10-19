@@ -153,6 +153,14 @@
 #' }
 NULL
 
+.capture_output <- utils::capture.output
+
+.onLoad <- function(libname, pkgname) {
+  if (requireNamespace("R.utils", quietly = TRUE))  {
+    .capture_output <<- R.utils::captureOutput
+  }
+}
+
 .log_level <- function(msg, ..., level, name, capture, logger = NULL)
 {
   if (is.null(logger)) logger <- flog.logger(name)
@@ -163,7 +171,7 @@ NULL
   appender <- flog.appender(name)
   layout <- flog.layout(name)
   if (capture) {
-    values <- paste(capture.output(print(...)), collapse='\n')
+    values <- paste(.capture_output(print(...)), collapse='\n')
     message <- c(layout(level, msg, name), "\n", values, "\n")
   } else {
     message <- layout(level, msg, name, ...)

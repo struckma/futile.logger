@@ -1,8 +1,8 @@
 Package: futile.logger
 Type: Package
 Title: A Logging Utility for R
-Version: 1.4.3
-Date: 2016-07-10
+Version: 1.4.3.9000
+Date: 2018-10-19
 Author: Brian Lee Yung Rowe
 Maintainer: Brian Lee Yung Rowe <r@zatonovo.com>
 Depends:
@@ -14,7 +14,8 @@ Imports:
 Suggests:
     testthat,
     jsonlite,
-    httr
+    httr,
+    R.utils
 Description: Provides a simple yet powerful logging utility. Based loosely on
     log4j, futile.logger takes advantage of R idioms to make logging a
     convenient and easy to use replacement for cat and print statements.
